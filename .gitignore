@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# solo se versiona el ejemplo de variables de entorno
+!.env.example
+
+# salidas de compilación locales
+build*.txt
+*.log
