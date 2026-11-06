@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Minus, Plus, Search, ShoppingBag, Trash2, UtensilsCrossed } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { ErrorState, LoadingState } from "@/components/common";
 import { CustomerNameDialog } from "@/components/orders/customer-name-dialog";
 import { TableMap, TableMapLegend } from "@/components/table-map";

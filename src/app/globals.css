@@ -553,3 +553,16 @@
 .modal-open {
   overflow: hidden;
 }
+
+/* nextjs-toast-notify: los avisos usan los colores del tema (claro y oscuro).
+   `html:root` gana a la hoja `:root` que la librería inyecta al cargarse. */
+html:root {
+  --toast-bg-color: var(--popover);
+  --toast-text-color: var(--popover-foreground);
+  --toast-close-color: var(--muted-foreground);
+  --toast-success-color: var(--success);
+  --toast-error-color: var(--destructive);
+  --toast-warning-color: var(--warning);
+  --toast-info-color: var(--info);
+  --toast-border-radius: var(--radius);
+}

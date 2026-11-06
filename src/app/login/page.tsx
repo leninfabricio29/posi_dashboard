@@ -4,7 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Loader2, LogIn } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import logo from "@/assets/img/icon_logo.png";
 import { useAuth } from "@/components/auth-provider";
 import { Button } from "@/components/ui/button";

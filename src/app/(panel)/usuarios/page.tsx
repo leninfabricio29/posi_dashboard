@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { KeyRound, MoreHorizontal, Pencil, Plus, Power, Trash2 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { useAuth } from "@/components/auth-provider";
 import { ConfirmDialog, EmptyState, ErrorState, LoadingState, PageHeader, SimpleSelect } from "@/components/common";
 import { DataTable } from "@/components/data-table";

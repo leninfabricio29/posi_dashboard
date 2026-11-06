@@ -3,7 +3,7 @@
 import * as React from "react";
 import { subDays } from "date-fns";
 import { ArrowDownCircle, ArrowUpCircle, Banknote, Landmark, Lock, Receipt, Wallet } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { CloseRegisterDialog } from "@/components/cash/close-register-dialog";
 import { CashReportActions } from "@/components/cash/report-actions";
 import { ConfirmDialog, CustomerName, EmptyState, ErrorState, LoadingState, PageHeader, StatCard } from "@/components/common";

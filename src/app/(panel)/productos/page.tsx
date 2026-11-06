@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Pencil, Plus, Trash2 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { ConfirmDialog, EmptyState, ErrorState, LoadingState, PageHeader, SimpleSelect } from "@/components/common";
 import { DataTable } from "@/components/data-table";
 import { Button } from "@/components/ui/button";

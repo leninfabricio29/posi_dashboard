@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { MoreHorizontal, Pencil, Plus, Trash2 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import {
   ConfirmDialog,
   CustomerName,

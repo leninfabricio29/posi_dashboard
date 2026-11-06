@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { AlertTriangle, ChefHat, CreditCard, Loader2, Minus, Pencil, Plus, ReceiptText, Trash2 } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { ConfirmDialog, CustomerName, OrderStatusBadge } from "@/components/common";
 import { OrderEditorDialog } from "@/components/orders/order-editor-dialog";
 import { OrderWizardMobile } from "@/components/orders/order-wizard-mobile";

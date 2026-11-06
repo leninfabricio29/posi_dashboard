@@ -4,7 +4,7 @@ import * as React from "react";
 import { startOfWeek } from "date-fns";
 import { Banknote, FileDown, Landmark, Receipt, ShoppingBag } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { CustomerName, EmptyState, ErrorState, LoadingState, PageHeader, StatCard } from "@/components/common";
 import { DataTable } from "@/components/data-table";
 import { DateRangePicker } from "@/components/date-pickers";

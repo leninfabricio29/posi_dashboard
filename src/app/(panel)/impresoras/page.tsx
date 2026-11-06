@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { AlertTriangle, Bluetooth, BluetoothSearching, Cable, Info, Pencil, Plus, Printer as PrinterIcon, Star, Trash2, Unplug } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { useAuth } from "@/components/auth-provider";
 import { ConfirmDialog, EmptyState, ErrorState, LoadingState, PageHeader, SimpleSelect } from "@/components/common";
 import { DataTable } from "@/components/data-table";

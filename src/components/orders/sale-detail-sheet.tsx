@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { OrderDetailSheet } from "@/components/orders/order-detail-sheet";
 import { errorMessage } from "@/lib/api/client";
 import { ordersApi } from "@/lib/api/orders";

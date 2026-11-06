@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Download, Printer as PrinterIcon, Bluetooth } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { Button } from "@/components/ui/button";
 import type { CashRegisterSummary, PaperWidth } from "@/lib/api/types";
 import { printCashCloseTicket } from "@/lib/printing/actions";

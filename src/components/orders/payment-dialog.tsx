@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Banknote, Calculator, Landmark, Plus, Shuffle, Trash2, X } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import { CustomerName, SimpleSelect } from "@/components/common";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

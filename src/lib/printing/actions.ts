@@ -1,4 +1,4 @@
-import { toast } from "sonner";
+import { toast } from "@/lib/toast";
 import type { CashRegisterSummary, PaperWidth, Printer } from "@/lib/api/types";
 import { BluetoothPrintError, NoPrinterConfiguredError, checkBluetoothSupport, printBytes } from "./bluetooth";
 import { checkSerialSupport, printBytesSerial } from "./serial";
@@ -53,19 +53,19 @@ async function run(bytes: () => Uint8Array, label: string, forceChoose?: boolean
     });
     return false;
   }
-  const id = toast.loading(`${label}…`);
+  toast.info(`${label}…`, { duration: 2000 });
   try {
     const send = transport === "ble" ? printBytes : printBytesSerial;
     // Elegir puerto/dispositivo exige el gesto del usuario: no se encola (la espera podría vencer el gesto).
     const name = forceChoose
       ? await send(bytes(), { forceChoose })
       : await enqueue(() => send(bytes(), { forceChoose }));
-    toast.success(`Enviado a ${name}`, { id });
+    toast.success(`Enviado a ${name}`);
     return true;
   } catch (err) {
     const msg =
       err instanceof BluetoothPrintError ? err.message : err instanceof Error ? err.message : "Error desconocido";
-    toast.error("No se pudo imprimir", { id, description: msg });
+    toast.error("No se pudo imprimir", { description: msg });
     return false;
   }
 }
@@ -110,9 +110,8 @@ function warnNoPrinter(always: boolean, reason?: string) {
     noPrinterWarned = true;
   }
   toast.warning("No hay impresora configurada en este navegador", {
-    description: reason ?? "Elige la impresora con “Conectar y probar” para imprimir automáticamente.",
+    description: reason ?? "En el módulo Impresoras, elige la impresora con “Conectar y probar” para imprimir automáticamente.",
     duration: 10000,
-    action: { label: "Ir a Impresoras", onClick: () => window.location.assign("/impresoras") },
   });
 }
 
@@ -132,22 +131,21 @@ export async function autoPrint(bytes: Uint8Array, label: string, opts: AutoPrin
     warnNoPrinter(!!opts.manual, support.reason);
     return false;
   }
-  const id = opts.manual ? toast.loading(`${label}…`) : undefined;
+  if (opts.manual) toast.info(`${label}…`, { duration: 2000 });
   try {
     const send = transport === "ble" ? printBytes : printBytesSerial;
     const name = await enqueue(() => send(bytes, { noPrompt: true }));
-    toast.success(`${label}: enviado a ${name}`, { id, duration: 2500 });
+    toast.success(`${label}: enviado a ${name}`, { duration: 2500 });
     return true;
   } catch (err) {
-    if (id !== undefined) toast.dismiss(id);
     if (err instanceof NoPrinterConfiguredError) {
       warnNoPrinter(!!opts.manual);
       return false;
     }
+    const reason = (err instanceof Error ? err.message : "Error desconocido").replace(/\.$/, "");
     toast.error(`No se pudo imprimir: ${label}`, {
-      description: err instanceof Error ? err.message : "Error desconocido",
+      description: `${reason}. Puedes reimprimir desde el detalle del pedido.`,
       duration: 15000,
-      action: { label: "Reintentar", onClick: () => void autoPrint(bytes, label, { manual: true }) },
     });
     return false;
   }
