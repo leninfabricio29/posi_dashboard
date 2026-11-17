@@ -198,7 +198,7 @@ function ProductDialog({
   const [name, setName] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [price, setPrice] = React.useState("");
-  const [taxable, setTaxable] = React.useState(true);
+  const [taxable, setTaxable] = React.useState(false);
   const [available, setAvailable] = React.useState(true);
   const [saving, setSaving] = React.useState(false);
 
@@ -208,7 +208,7 @@ function ProductDialog({
     setName(p?.name ?? "");
     setDescription(p?.description ?? "");
     setPrice(p ? p.price.toFixed(2) : "");
-    setTaxable(p?.taxable ?? true);
+    setTaxable(p?.taxable ?? false);
     setAvailable(p?.available ?? true);
   }, [state.open, state.product]);
 
