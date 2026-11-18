@@ -27,7 +27,7 @@ export function buildSalesReportPdf(r: SalesReport, restaurantName: string) {
     theme: "grid",
     styles: { fontSize: 9 },
     headStyles: HEAD,
-    head: [["Ventas", "Subtotal", "IVA", "Total", "Efectivo", "Transferencia", "Ticket prom."]],
+    head: [["Ventas", "Subtotal", "IVA", "Total", "Efectivo", "Transferencia", "Ticket prom.", "Egresos caja"]],
     body: [
       [
         String(r.totals.count),
@@ -37,6 +37,7 @@ export function buildSalesReportPdf(r: SalesReport, restaurantName: string) {
         money(r.totals.cash),
         money(r.totals.transfer),
         money(r.totals.averageTicket),
+        money(r.totals.expenses ?? 0),
       ],
     ],
     margin: { left: MARGIN, right: MARGIN },

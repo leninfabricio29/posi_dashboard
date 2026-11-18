@@ -310,6 +310,9 @@ export interface SalesReport {
     cash: number;
     transfer: number;
     averageTicket: number;
+    /** Egresos de caja registrados en el rango. Opcional por compatibilidad con APIs anteriores. */
+    expenses?: number;
+    expenseCount?: number;
   };
   byDay: { date: string; count: number; total: number; cash: number; transfer: number }[];
   byWeek: { weekStart: string; weekEnd: string; count: number; total: number; cash: number; transfer: number }[];

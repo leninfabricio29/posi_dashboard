@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { startOfWeek } from "date-fns";
-import { Banknote, FileDown, Landmark, Receipt, ShoppingBag } from "lucide-react";
+import { ArrowUpFromLine, Banknote, FileDown, Landmark, Receipt, ShoppingBag } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { toast } from "@/lib/toast";
 import { CustomerName, EmptyState, ErrorState, LoadingState, PageHeader, StatCard } from "@/components/common";
@@ -89,7 +89,7 @@ export default function ReportesPage() {
         <ErrorState message={report.error} onRetry={report.reload} />
       ) : !r ? null : (
         <>
-          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-5">
             <StatCard
               label="Ventas totales"
               value={money(r.totals.total)}
@@ -99,6 +99,12 @@ export default function ReportesPage() {
             <StatCard label="Efectivo" value={money(r.totals.cash)} icon={<Banknote className="size-4" />} />
             <StatCard label="Transferencias" value={money(r.totals.transfer)} icon={<Landmark className="size-4" />} />
             <StatCard label="Ticket promedio" value={money(r.totals.averageTicket)} icon={<ShoppingBag className="size-4" />} />
+            <StatCard
+              label="Total egresos caja"
+              value={money(r.totals.expenses ?? 0)}
+              hint={`${r.totals.expenseCount ?? 0} egresos en el rango`}
+              icon={<ArrowUpFromLine className="size-4" />}
+            />
           </div>
 
           <Tabs defaultValue="dia">
